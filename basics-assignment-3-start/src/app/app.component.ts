@@ -8,25 +8,20 @@ import { Component } from '@angular/core';
 export class AppComponent {
   paragraph = 'Secret Password = tuna';
   count = 0;
-  container1 = [];
-  container2 = []
+  container = [];
   displayParagraph = false;
 
-  constructor () { }
-
   onDisplay() {
-    this.displayParagraph = true;
+    this.displayParagraph = !this.displayParagraph;
     this.count++;
-    if (this.count < 5) {
-      this.container1.push(this.count);
-    } else {
-      this.container2.push(this.count);
-    }
+    this.container.push(this.count);
   }
 
-  getColor() {
-    if (this.count > 4) {
+  getColor(item) {
+    if (item >= 5) {
       return '#4287f5';
+    } else {
+      return 'transparent';      
     }
   }
 }

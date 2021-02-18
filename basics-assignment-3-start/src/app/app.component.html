@@ -17,14 +17,10 @@
       Display Details
     </button>
     <p *ngIf="displayParagraph">{{paragraph}}</p>
-    <ul *ngFor="let c of container1">
-      <li>{{c}}</li>
-    </ul>
-    <ul *ngFor="let c of container2">
-      <li [ngStyle]="{backgroundColor: getColor()}"
-        [ngClass]="{five: count > 4}">{{c}}
-      </li>
-    </ul>
+    <div *ngFor="let c of container"
+      [ngStyle]="{backgroundColor: getColor(c)}"
+      [ngClass]="{'five': c >= 5}">{{c}}
+    </div>
   </div>
 
 </div>
