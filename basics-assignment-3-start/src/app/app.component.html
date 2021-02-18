@@ -17,10 +17,19 @@
       Display Details
     </button>
     <p *ngIf="displayParagraph">{{paragraph}}</p>
-    <div *ngFor="let c of container"
+    
+    <!-- <div *ngFor="let c of container"
       [ngStyle]="{backgroundColor: getColor(c)}"
       [ngClass]="{'five': c >= 5}">{{c}}
+    </div> -->
+
+    <!-- implementation with date as value on the container
+      retretrieve the index for the operation -->
+    <div *ngFor="let c of container; let i = index"
+      [ngStyle]="{backgroundColor: getColor(i)}"
+      [ngClass]="{'five': i >= 4}">{{c}}
     </div>
+
   </div>
 
 </div>

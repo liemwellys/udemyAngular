@@ -14,11 +14,12 @@ export class AppComponent {
   onDisplay() {
     this.displayParagraph = !this.displayParagraph;
     this.count++;
-    this.container.push(this.count);
+    // this.container.push(this.count);
+    this.container.push(new Date());
   }
 
   getColor(item) {
-    if (item >= 5) {
+    if (item >= 4) {
       return '#4287f5';
     } else {
       return 'transparent';      
