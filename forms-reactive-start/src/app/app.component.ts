@@ -22,18 +22,36 @@ export class AppComponent implements OnInit {
       'hobbies': new FormArray([])
     });
 
-    /* Syntax for checking state of value & status change */
-    // this.signupForm.valueChanges.subscribe(
+    // Check Value Change Syntax
+    this.signupForm.valueChanges.subscribe(
+      (value) => console.log(value)
+    );
+
+    // Check Value Change Syntax
+    // this.signupForm.statusChanges.subscribe(
     //   (value) => console.log(value)
     // );
 
-    this.signupForm.statusChanges.subscribe(
-      (value) => console.log(value)
-    );
+    // set value syntax
+    this.signupForm.setValue({
+      'userData': {
+        'username': 'Max',
+        'email': 'max@test.com'
+      }, 
+      'gender': 'male',
+      'hobbies': []
+    })
+
+    // patch value syntax
+    this.signupForm.patchValue({
+      'userData': {
+        'username': 'Hanna',
+      }
+    })
   }
 
   onSubmit() {
-    console.log(this.signupForm);
+    console.log(this.signupForm.value);
   }
 
   get controls() {
@@ -43,6 +61,15 @@ export class AppComponent implements OnInit {
   onAddHobby() {
     const control = new FormControl(null, Validators.required);
     (<FormArray>this.signupForm.get('hobbies')).push(control);
+  }
+
+  onAddHobby2() {
+    const group = new FormGroup({
+      "key": new FormControl('key', Validators.required),
+      "value": new FormControl('value', Validators.required),
+    });
+
+    (<FormArray>this.signupForm.get('hobbies')).push(group);
   }
 
   forbiddenNames(control: FormControl): {[s: string]: boolean} {
